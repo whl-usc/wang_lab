@@ -9,7 +9,6 @@ frsa.py is used as an aid for SPRM data analysis.
 ## About the Project
 
 A gridded chip from the SPRM machine...
-
 Can have one region-of-interest (ROI) or many smaller ones (_e_._g_., ROI1 (%)). 
 When voltage is applied to the chip, data is captured for all of the ROI at the same time.
 
@@ -31,7 +30,10 @@ Analysis is as follows:
 4. Determine the start/end points of the application of voltage.
 
 > The start and end points of voltage application are determined based on the trend of a mathematical average.
-> 
+> For effective parsing of the original dataframe, the Vec (V) values are curated.
+> Filter 1: Determine the average of the first 25 Vec (V) values. Only data points with Vec (V) >= 10x the average are kept. This differentiates for when data reading begins and when voltage is applied, since application of voltage significantly changes the Vec.
+> Filter 2: Determine the average of 20 Vec values after voltage is applied. Subtract the average from each Vec value. Only data points that >= +0.005V the average are kept. This filters out any artifacts that are substantially lower (noise). 
+> The mean of 5 Vec data points is taken for all values curated after the filters. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
