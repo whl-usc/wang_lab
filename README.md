@@ -31,10 +31,17 @@ Analysis is as follows:
 
 > The start and end points of voltage application are determined based on the trend of a mathematical average.
 > For effective parsing of the original dataframe, the Vec (V) values are curated.
-> Filter 1: Determine the average of the first 25 Vec (V) values. Only data points with Vec (V) >= 10x the average are kept. This differentiates for when data reading begins and when voltage is applied, since application of voltage significantly changes the Vec.
-> Filter 2: Determine the average of 20 Vec values after voltage is applied. Subtract the average from each Vec value. Only data points that >= +0.005V the average are kept. This filters out any artifacts that are substantially lower (noise). 
-> The mean of 5 Vec data points is taken for all values curated after the filters. 
 
+> Filter 1: Determine the average of the first 25 Vec (V) values. Only data points with a Vec (V) value >= 10x the average are kept. This differentiates for when data reading begins and voltage application, since applying voltage significantly changes Vec (V) values.
+
+> Filter 2: Determine the average of 20 Vec (V) values after voltage is applied. Subtract the average from each Vec (V) value. Only data points with Vec (V) >= +0.005V the average are kept. This filters out any values that are significantly lower (_i.e._, artifacts or noise). 
+
+> Each data point and the next four values are averaged and appended into a column. The difference of the each data point and the following data point are determined. Using a cutoff of -1.5E-04, if the difference of two consecutive averages are lower than the cutoff (_i.e._, Vec (V) is decreasing), the start point is determined.
+
+> The end point is determined by parsing the original dataframe and curating the highest 1000 Vec (V) values. The endpoint must be one of the largest Vec (V) value in the dataset. By determining the median of the top 1000 values, the possible endpoint values are narrowed. From all Vec (V) values +/-200 the median, the largest is determined as the endpoint. 
+
+
+    
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
@@ -71,6 +78,16 @@ Example:
 * 0.2 is the highest voltage
 ```
 python3 frsa.py kno3_0.025v.xlsx y -0.55 0.2
+```
+
+Example output:
+```
+    2022-06-10 16:10:24 Opening .xlsx and reading data...
+    2022-06-10 16:10:31 File saved as kno3_0.02v_2cycles.csv
+    2022-06-10 16:10:31 Omitted graph plotting...
+    2022-06-10 16:10:31 Start point:        310
+    2022-06-10 16:10:31 End point:          4212
+    2022-06-10 16:10:42 Trend at Vec (V) determined start point matches ROI_mean.
 ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
