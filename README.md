@@ -2,25 +2,22 @@
 
 <!-- PROJECT NAME -->
 ## frsa.py
-An analysis tool for SPRM data with selectable options.
+FRSA stands for **F**rame**R**ate **S**hift **A**nalysis. It is an analysis tool for SPRM data saved as .xlsx with selectable options.
 
 <!-- ABOUT THE PROJECT -->
 ## About the Project
 
 This is the explanation of what is being done.
-
-Maybe inclue a list.
+Maybe inclue a list of the goals accomplished.
 
 *
 *
 *
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-This is how you would set up the program.
+Set up the program prior to running.
 
 ### Prerequisites
 
@@ -63,12 +60,3 @@ Wilson Lee - wilsonhl@usc.edu
 
 Project Link: [https://github.com/wlee9829/wang_lab](https://github.com/wlee9829/wang_lab)
 <p align="right">(<a href="#top">back to top</a>)</p>
-
->contact:	wilsonhl@usc.edu 
->
->date:		2022_06_09
->
->python:	python3.10
->
-
-FRSA is the **F**rame**R**ate **S**hift **A**nalysis tool. It 
