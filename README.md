@@ -19,10 +19,14 @@ Analysis is as follows:
 
 > pandas: dataframe (written to a new .csv) containing only the data entry number, mean_ROI, and Vec (V).
 
-2. Plot a lineplot of time _vs._ ROI mean.
-3. Plot a lineplot of time _vs._ Vec (V).
+2. Plot a lineplot of time _vs._ ROI mean and a lineplot of time _vs._ Vec (V).
 
-> seaborn: lineplots as described above. Note that the graph values for time _vs._ Vec (V) are sensitive to the low and high voltage values.
+<p float="left">
+    <img src="https://github.com/wlee9829/wang_lab/blob/main/kno3_0.02v_2cycles_ROI_mean.png" width="200"/>
+    &nbsp
+    <img src="https://github.com/wlee9829/wang_lab/blob/main/kno3_0.02v_2cycles_Vec.png" width="200"/>
+
+> seaborn: lineplots as plotted as described above. Note that the y-axis values for the time _vs._ Vec (V) plot are sensitive to the low and high voltage values.
 
 4. Determine the start/end points of the application of voltage.
 
