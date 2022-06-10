@@ -12,13 +12,23 @@ A gridded chip from the SPRM machine...
 
 Can have one region-of-interest (ROI) or many smaller ones (_e_._g_., ROI1 (%)). 
 When voltage is applied to the chip, data is captured for all of the ROI at the same time.
+
 Analysis is as follows:
 
-* Take the mean of all the ROI at their respective timepoints.
-* Plot a scatterplot of time _vs._ ROI mean.
-* Plot a scatterplot of time _vs._ Vec (V).
-* Determine the start/end points of the application of voltage.
- 
+1. Take the mean of all the ROI at their respective timepoints.
+
+> pandas: dataframe (written to a new .csv) containing only the data entry number, mean_ROI, and Vec (V).
+
+2. Plot a lineplot of time _vs._ ROI mean.
+3. Plot a lineplot of time _vs._ Vec (V).
+
+> seaborn: lineplots as described above. Note that the graph values for time _vs._ Vec (V) are sensitive to the low and high voltage values.
+
+4. Determine the start/end points of the application of voltage.
+
+> The start and end points of voltage application are determined based on the trend of a mathematical average.
+> 
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
