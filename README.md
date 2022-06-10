@@ -1,4 +1,4 @@
-<<div id="top"></div>
+<div id="top"></div>
 
 <!-- PROJECT NAME -->
 ## frsa.py
