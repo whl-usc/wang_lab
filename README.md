@@ -1,8 +1,8 @@
 <<div id="top"></div>
 
-# wang_lab
-## script:  frsa.py
-Data analysis tools for SPRM data.
+<!-- PROJECT NAME -->
+## frsa.py
+An analysis tool for SPRM data with selectable options.
 
 <!-- ABOUT THE PROJECT -->
 ## About the Project
