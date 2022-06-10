@@ -2,17 +2,23 @@
 
 <!-- PROJECT NAME -->
 ## frsa.py
-FRSA stands for **F**rame**R**ate **S**hift **A**nalysis. It is an analysis tool for SPRM data saved as .xlsx with selectable options.
+FRSA stands for **F**rame**R**ate **S**hift **A**nalysis. 
+frsa.py is used as an aid for SPRM data analysis.
 
 <!-- ABOUT THE PROJECT -->
 ## About the Project
 
-This is the explanation of what is being done.
-Maybe inclue a list of the goals accomplished.
+A gridded chip from the SPRM machine...
 
-*
-*
-*
+Can have one region-of-interest (ROI) or many smaller ones (_e_._g_., ROI1 (%)). 
+When voltage is applied to the chip, data is captured for all of the ROI at the same time.
+Analysis is as follows:
+
+* Take the mean of all the ROI at their respective timepoints.
+* Plot a scatterplot of time _vs._ ROI mean.
+* Plot a scatterplot of time _vs._ Vec (V).
+* Determine the start/end points of the application of voltage.
+ 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
