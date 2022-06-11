@@ -30,7 +30,7 @@ Analysis is as follows:
 4. Determine the start/end points of the application of voltage.
 
 > The start and end points of voltage application are determined based on the trend of a mathematical average.
-> For effective parsing of the original dataframe, the Vec (V) values are curated.
+> For effective parsing of the original dataframe, Vec (V) values are first curated.
 
 > Filter 1: Determine the average of the first 25 Vec (V) values. Only data points with a Vec (V) value >= 10x the average are kept. This differentiates for when data reading begins and voltage application, since applying voltage significantly changes Vec (V) values.
 
@@ -40,7 +40,7 @@ Analysis is as follows:
 
 > The end point is determined by parsing the original dataframe and curating the highest 1000 Vec (V) values. The endpoint must be one of the largest Vec (V) values in the range of the dataset. By finding the median of the top 1000 values, possible endpoint values are narrowed to a single peak. From all Vec (V) values +/-200 the median, the largest is determined as the endpoint. 
    
->
+> To validate the Vec (V) start point, the ROI_mean start point is determined using the same  approach as described above. The difference between the average of 5 consecutive values should be have a similar trend at the starting point. If values are within a cutoff of <value here>, the trends are considered matching and the start/end points are identified.
 
 
     
@@ -52,17 +52,11 @@ Set up the program prior to running.
 
 ### Prerequisites
 
-frsa.py was written using python3.10
-* Opening .xlsx
-```
-pip install openpyxl
-```
-* Installing numpy
-* Installing seaborn
-* Installing
-```
-pip install ____
-```
+* maptlotlib
+* numpy
+* openpyxl
+* python3 (frsa.py was written using python3.10)
+* seaborn
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -84,12 +78,12 @@ python3 frsa.py kno3_0.025v.xlsx y -0.55 0.2
 
 Example output:
 ```
-    2022-06-10 16:10:24 Opening .xlsx and reading data...
-    2022-06-10 16:10:31 File saved as kno3_0.02v_2cycles.csv
-    2022-06-10 16:10:31 Omitted graph plotting...
-    2022-06-10 16:10:31 Start point:        310
-    2022-06-10 16:10:31 End point:          4212
-    2022-06-10 16:10:42 Trend at Vec (V) determined start point matches ROI_mean.
+2022-06-10 16:10:24 Opening .xlsx and reading data...
+2022-06-10 16:10:31 File saved as kno3_0.02v_2cycles.csv
+2022-06-10 16:10:31 Omitted graph plotting...
+2022-06-10 16:10:31 Start point:        310
+2022-06-10 16:10:31 End point:          4212
+2022-06-10 16:10:42 Trend at Vec (V) determined start point matches ROI_mean.
 ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
