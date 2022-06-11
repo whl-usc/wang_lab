@@ -38,7 +38,9 @@ Analysis is as follows:
 
 > Each data point and the next four values are averaged and appended into a column. The difference of the each data point and the following data point are determined. Using a cutoff of -1.5E-04, if the difference of two consecutive averages are lower than the cutoff (_i.e._, Vec (V) is decreasing), the start point is determined.
 
-> The end point is determined by parsing the original dataframe and curating the highest 1000 Vec (V) values. The endpoint must be one of the largest Vec (V) value in the dataset. By determining the median of the top 1000 values, the possible endpoint values are narrowed. From all Vec (V) values +/-200 the median, the largest is determined as the endpoint. 
+> The end point is determined by parsing the original dataframe and curating the highest 1000 Vec (V) values. The endpoint must be one of the largest Vec (V) values in the range of the dataset. By finding the median of the top 1000 values, possible endpoint values are narrowed to a single peak. From all Vec (V) values +/-200 the median, the largest is determined as the endpoint. 
+   
+>
 
 
     
