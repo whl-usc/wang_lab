@@ -53,6 +53,7 @@ Set up the program prior to running.
 * maptlotlib
 * numpy
 * openpyxl
+* pandas
 * python3 (frsa.py was written using python3.10)
 * seaborn
 
@@ -65,11 +66,12 @@ Enter arguments as follows:
 ```
 python3 frsa.py <file_name.xlsx> y/n voltage_low voltage_high
 ```
+
 Example:
 * File is called "kno3_0.025v.xlsx"
 * "y" means a graph will be plotted
 * -0.55 is the lowest voltage
-* 0.2 is the highest voltage
+* 0.20 is the highest voltage
 ```
 python3 frsa.py kno3_0.025v.xlsx y -0.55 0.2
 ```
