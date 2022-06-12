@@ -78,9 +78,10 @@ else:
 vec_0 = float(df_small.iloc[1:25,[2]].mean())
 df_0 = df_small.loc[df_small['Vec (V)'] > (10*vec_0)]
 
-# Determine the start point based on the average trends.
+# Determine the start point based on the averages.
 vec_1 = float(df_0.iloc[5:25,[2]].mean())
 df_1 = df_0.loc[df_0['Vec (V)'] >= (vec_1-0.005)]
+##df_1.to_csv('near_start_point.csv', index = None, header = True)
 
 mean_5 = []
 for i in range(0,len(df_1)):
@@ -96,7 +97,7 @@ for i in range(0,len(df_1)-2):
 	if sub1 > cutoff and sub2 > cutoff:
 		continue
 	elif sub1 < cutoff and sub2 < cutoff:
-		start_point = int(df_1.iloc[i+1,[0]])
+		start_point = int(df_1.iloc[i+1,[0]]) + 1
 		print(str(datetime.now())[:-7] + " Start point:	" + str(start_point))
 		break
 	elif sub1 < cutoff and sub2 > cutoff:
@@ -107,42 +108,15 @@ for i in range(0,len(df_1)-2):
 		print("No start point determined, please check the cutoff value in line 91.")
 
 # Determine the end point based on the average trends.
-large_values = df_small['Vec (V)'].nlargest(n=1000)
-peak = large_values.index.tolist()
-midpoint = np.median(peak)
-mid_plus = int(midpoint + 200); mid_minus = int(midpoint - 200)
-df_end = df_small.iloc[mid_minus:mid_plus]
-max_value = df_end['Vec (V)'].nlargest(n=1)
-x = max_value.index.tolist(); end_point = str(x)[1:-1]
+df_size = int(len(df_small))
+df_end = df_small.iloc[int(start_point*2):int(df_size*0.6),:]
+vec_large = df_end.nlargest(150, "Vec (V)")
+#index_small = vec_large.nsmallest(100, "number")
+endpoint = vec_large.nlargest(1, "Vec (V)")
+x = endpoint.index.values.tolist(); y = str(x)[1:-1]
+end_point = int(y) + 1
 print(str(datetime.now())[:-7] + " End point:		" + str(end_point))
 
-
-# Compare the trend to the "start point" of the ROI_mean graph.
-roi_0 = (df_small.iloc[start_point:,[1]]); roi_1 = roi_0.reset_index()
-mean_5 = []
-for i in range(0,len(roi_1)):
-	avg_i5 = (float(roi_1.iloc[i,[1]] + roi_1.iloc[i,[1]] + roi_1.iloc[i,[1]] + roi_1.iloc[i,[1]] + roi_1.iloc[i,[1]]))/5
-	mean_5.append(avg_i5)
-roi_1["mean_5"]=mean_5
-
-cutoff = -5.0E-04 #This value may need to be changed if no start point is found.
-
-diff = []
-for i in range(0,len(roi_1)-2):
-	sub1 = float(roi_1.iloc[i+2,[1]] - roi_1.iloc[i+1,[1]])
-	sub2 = float(roi_1.iloc[i+3,[1]] - roi_1.iloc[i+2,[1]])
-	if sub1 > cutoff and sub2 > cutoff:
-		continue
-	elif sub1 < cutoff and sub2 < cutoff:
-		start_point = int(roi_0.iloc[i+1,[0]])
-		print(str(datetime.now())[:-7] + "Trend at Vec (V) determined start point matches ROI_mean.")
-		break
-	elif sub1 < cutoff and sub2 > cutoff:
-		continue
-	elif sub1 > cutoff and sub2 < cutoff:
-		continue
-	else:
-		print("Trend does not match, please check the cutoff value in line 131.")
 
 '''
 When we do the analysis, we look at a gridded chip. You can have one ROI (one dataset from one larger box) or fragment into smaller areas (Roi# (%)). When voltage is applied, it takes data from all of the ROI (squares) at the same time.
