@@ -36,9 +36,9 @@ Analysis is as follows:
 
 > Filter 2: Determine the average of 20 Vec (V) values after voltage is applied. Subtract the average from each Vec (V) value. Only data points with Vec (V) >= +0.005V the average are kept. This filters out any values that are significantly lower (_i.e._, artifacts or noise). 
 
-> Each data point and the next four values are averaged and appended into a column. The difference of the each data point and the following data point are determined. Using a cutoff of _-1.5E-04_, if the difference of two consecutive averages are lower than the cutoff (_i.e._, Vec (V) is decreasing), the start point is determined.
+> Each data point and the next four values are averaged and appended into a column. The difference of the each data point and the following data point are determined. Using a cutoff of _-1.5E-04_, if the difference of two consecutive averages are lower than the cutoff (_i.e._, Vec (V) is decreasing), this value is the start point.
 
-> The end point is determined by parsing the original dataframe and curating the highest 1000 Vec (V) values. The endpoint must be one of the largest Vec (V) values in the range of the dataset. By finding the median of the top 1000 values, possible endpoint values are narrowed to a single peak. From all Vec (V) values +/-200 the median, the largest is determined as the endpoint. 
+> The end point is determined by parsing the original dataframe and curating the highest 1000 Vec (V) values. The endpoint must be one of the largest Vec (V) values in the range of the dataset. The script only focuses on values that are at least 2x the start point, but no more than 0.6x the range of possible values. The 150 values with the largest Vec (V) are curated, and the single point with the highest Vec (V) must be the end point.
    
 > To validate the Vec (V) start point, the ROI_mean start point is determined using the same  approach as described above. The difference between the average of 5 consecutive values should be have a similar trend at the starting point. If values are within a cutoff of _-5.0E-04_, the trends are considered matching and the start/end points are identified.
     
