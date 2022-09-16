@@ -60,7 +60,7 @@ Set up the program prior to running.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-The script requires no prior coding experience in order to use. 
+The script requires basic command line input to use. 
 
 Enter arguments as follows:
 ```
