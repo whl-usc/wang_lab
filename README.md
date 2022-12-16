@@ -91,7 +91,7 @@ Example output:
 <!-- CONTACT -->
 ## Contact
 
-Wilson Lee - wilsonhl@usc.edu
+Wilson Lee - wilson9829@gmail.com
 
 Project Link: [https://github.com/wlee9829/wang_lab](https://github.com/wlee9829/wang_lab)
 <p align="right">(<a href="#top">back to top</a>)</p>
